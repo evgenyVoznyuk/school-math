@@ -1,4 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router';
+import MainPage from './../views/MainPage.vue';
+import TaskPage from './../components/TaskPage.vue';
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -10,7 +12,12 @@ const router = createRouter({
     {
       path: '/math',
       name: 'math',
-      component: () => import('../views/MainPage.vue'),
+      component: MainPage,
+    },
+    {
+      path: '/math/:name',
+      name: 'task',
+      component: TaskPage,
     },
   ],
 })
