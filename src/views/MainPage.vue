@@ -1,21 +1,18 @@
 <template>
   <div class="wrapper">
     <router-link
-      v-for="task in tasks"
-      :key="task.name"
+      v-for="{ name } in tasks"
+      :key="name"
       class="to-task-button"
-      :to="{name: 'task', params: { name: task.routeName}}"
+      :to="{ name: 'task', params: { name }}"
     >
-      {{ task.routeName }}
+      {{ name }}
     </router-link>
   </div>
 </template>
 
 <script setup lang="ts">
-import {tasks} from "@/utils/tasks";
-defineProps<{
-  msg: string
-}>()
+import { tasks } from "@/tasks/simple";
 </script>
 
 <style>
@@ -33,9 +30,9 @@ defineProps<{
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid black;
   margin: 6px;
   border-radius: 24px;
+  background-color: #FFDE03;
   text-decoration: none;
   color: black;
 }

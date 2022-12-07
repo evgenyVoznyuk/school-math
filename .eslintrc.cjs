@@ -14,5 +14,6 @@ module.exports = {
   rules: {
     'comma-dangle': ['error', 'always-multiline'],
     'semi-style': ['error', 'last'],
+    "space-before-function-paren": ["error", "always"],
   },
 }
