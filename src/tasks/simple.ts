@@ -1,10 +1,10 @@
-import type { TTask } from "@/types/tasks";
+import type { TTask } from '../tasks/types/simple';
 
 const tasks: TTask[] = [
     {
         name: '36+2',
         numbers: {
-            first: 'two',
+            first: 'notDec',
             second: 'one',
             sign: '+',
         },
@@ -12,7 +12,7 @@ const tasks: TTask[] = [
     {
         name: '36+20',
         numbers: {
-            first: 'two',
+            first: 'notDec',
             second: 'dec',
             sign: '+',
         },
@@ -20,7 +20,7 @@ const tasks: TTask[] = [
     {
         name: '36-2',
         numbers: {
-            first: 'two',
+            first: 'notDec',
             second: 'one',
             sign: '-',
         },
@@ -28,7 +28,7 @@ const tasks: TTask[] = [
     {
         name: '36-20',
         numbers: {
-            first: 'two',
+            first: 'notDec',
             second: 'dec',
             sign: '-',
         },
@@ -45,12 +45,22 @@ const tasks: TTask[] = [
         name: '60-24',
         numbers: {
             first: 'dec',
-            second: 'two',
+            second: 'notDec',
             sign: '-',
         },
     },
 ];
 
-const getTaskByName = (name: string) => tasks.find(t => name === t.name);
+//TODO change to smth meaningful
+const defaultTask = {
+    name: '60-24',
+    numbers: {
+        first: 'dec',
+        second: 'two',
+        sign: '-',
+    },
+}
+
+const getTaskByName = (name: string) => tasks.find(t => name === t.name) ?? defaultTask;
 
 export { tasks, getTaskByName };

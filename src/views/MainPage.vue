@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { tasks } from "@/tasks/simple";
+import { tasks } from '../tasks/simple';
 </script>
 
 <style>

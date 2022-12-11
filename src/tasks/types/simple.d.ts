@@ -1,4 +1,3 @@
-type TNumberKey = 'one' | 'two' | 'dec';
 type TSign = '-' | '+';
 type TTaskNumbers = {
     first: TNumberKey,
@@ -10,4 +9,4 @@ type TTask = {
     numbers: TNumbers,
 };
 
-export { TNumberKey, TSign, TTaskNumbers, TTask };
+export { TSign, TTaskNumbers, TTask };

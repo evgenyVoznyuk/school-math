@@ -11,7 +11,7 @@ vi.mock('../../tasks/simple', () => ({
   getTaskByName: () => ({
     numbers: {
       first: 'dec',
-      second: 'two',
+      second: 'notDec',
       sign: '-',
     },
   }),
