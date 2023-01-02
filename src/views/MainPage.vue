@@ -1,18 +1,21 @@
 <template>
   <div class="wrapper">
-    <router-link
+    <link-button
       v-for="{ name } in tasks"
       :key="name"
-      class="to-task-button"
-      :to="{ name: 'task', params: { name }}"
-    >
-      {{ name }}
-    </router-link>
+      route-name="task"
+      :param-name="name"
+      :width="100"
+      :height="100"
+      bg-color="#FFDE03"
+      color="#000000"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import { tasks } from '../tasks/simple';
+import LinkButton from "../components/LinkButton.vue";
 </script>
 
 <style>
@@ -23,17 +26,5 @@ import { tasks } from '../tasks/simple';
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-}
-.to-task-button {
-  width: 100px;
-  height: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 6px;
-  border-radius: 24px;
-  background-color: #FFDE03;
-  text-decoration: none;
-  color: black;
 }
 </style>
