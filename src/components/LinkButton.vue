@@ -8,13 +8,14 @@
 </template>
 
 <script setup lang="ts">
+import type { Color } from './types/colors';
 const props = defineProps<{
   routeName: string,
   paramName: string,
   width: number,
   height: number,
-  bgColor: string,
-  color: string,
+  bgColor: Color,
+  color: Color,
 }>()
 </script>
 
