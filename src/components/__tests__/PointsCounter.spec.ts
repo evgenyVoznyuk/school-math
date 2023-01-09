@@ -82,4 +82,21 @@ describe('PointsCounter', () => {
         .advanceTimersToNextTimer()
     expect(wrapper.vm.points).toBe(0);
   })
+  it('emits points on stop', async () => {
+    const wrapper = mount(PointsCounter, {
+      props: {
+        initial: 10,
+        increment: 10,
+        decrement: 1,
+        interval: 1000,
+        color: '#000',
+      },
+    })
+    await wrapper.vm.start();
+    vi.advanceTimersToNextTimer()
+        .advanceTimersToNextTimer()
+    await wrapper.vm.stop();
+    expect(wrapper.emitted()).toHaveProperty('stop');
+    expect(wrapper.emitted().stop[0]).toEqual([8]);
+  })
 })
