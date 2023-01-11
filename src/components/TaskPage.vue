@@ -12,6 +12,13 @@
       :text="questionText"
       :color="'#000'"
     />
+    <AnswerInput
+      ref="answerInput"
+      v-model="answer"
+      :type="'number'"
+      :color="'#000'"
+      :width="120"
+    />
   </div>
 </template>
 
@@ -23,6 +30,7 @@ import { getTaskByName } from '../tasks/simple';
 import { getNumber } from '../tasks/generators'
 import PointsCounter from "./PointsCounter.vue";
 import QuestionText from "./QuestionText.vue";
+import AnswerInput from "./AnswerInput.vue";
 
 const route = useRoute();
 const { numbers } : TTask = getTaskByName(route.params.name as string);
@@ -33,8 +41,12 @@ const secondNumber = getNumber(numbers.second, 1, secondMax);
 const questionText = ref<string>()
 questionText.value = `${firstNumber} ${numbers.sign} ${secondNumber} = ?`
 
-const counter = ref()
+const counter = ref();
+const answerInput = ref();
 onMounted(() => {
-  counter.value?.start();
+  counter.value.start();
+  answerInput.value.focus();
 })
+
+const answer = ref();
 </script>

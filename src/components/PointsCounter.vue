@@ -5,14 +5,14 @@
 </template>
 
 <script setup lang="ts">
-import type { Color } from './types/colors';
+import type { TColor } from './types/colors';
 import { ref } from "vue";
 const props = defineProps<{
   initial: number,
   increment: number,
   decrement: number,
   interval: number,
-  color: Color,
+  color: TColor,
 }>();
 
 const emits = defineEmits<{

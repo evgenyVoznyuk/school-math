@@ -5,10 +5,10 @@
 </template>
 
 <script setup lang="ts">
-import type { Color } from './types/colors';
+import type { TColor } from './types/colors';
 defineProps<{
   text: string,
-  color: Color,
+  color: TColor,
 }>();
 </script>
 

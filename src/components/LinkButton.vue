@@ -1,21 +1,21 @@
 <template>
   <router-link
     class="link-button"
-    :to="{ name: routeName, params: { name: props.paramName }}"
+    :to="{ name: routeName, params: { name: paramName }}"
   >
-    {{ props.paramName }}
+    {{ paramName }}
   </router-link>
 </template>
 
 <script setup lang="ts">
-import type { Color } from './types/colors';
-const props = defineProps<{
+import type { TColor } from './types/colors';
+defineProps<{
   routeName: string,
   paramName: string,
   width: number,
   height: number,
-  bgColor: Color,
-  color: Color,
+  bgColor: TColor,
+  color: TColor,
 }>()
 </script>
 
