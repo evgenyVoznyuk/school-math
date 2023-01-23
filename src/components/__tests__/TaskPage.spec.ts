@@ -9,9 +9,11 @@ vi.mock('vue-router', () => ({
 
 vi.mock('../../tasks/simple', () => ({
   getTaskByName: () => ({
-    numbers: {
+    given: {
       first: 'dec',
       second: 'notDec',
+      max: 99,
+      min: 20,
       sign: '-',
     },
   }),

@@ -3,60 +3,74 @@ import type { TTask } from '../tasks/types/simple';
 const tasks: TTask[] = [
     {
         name: '36+2',
-        numbers: {
+        given: {
             first: 'notDec',
             second: 'one',
+            max: 99,
+            min: 21,
             sign: '+',
         },
     },
     {
         name: '36+20',
-        numbers: {
+        given: {
             first: 'notDec',
             second: 'dec',
+            max: 99,
+            min: 21,
             sign: '+',
         },
     },
     {
         name: '36-2',
-        numbers: {
+        given: {
             first: 'notDec',
             second: 'one',
+            max: 99,
+            min: 21,
             sign: '-',
         },
     },
     {
         name: '36-20',
-        numbers: {
+        given: {
             first: 'notDec',
             second: 'dec',
+            max: 99,
+            min: 21,
             sign: '-',
         },
     },
     {
         name: '60-7',
-        numbers: {
+        given: {
             first: 'dec',
             second: 'one',
+            max: 99,
+            min: 20,
             sign: '-',
         },
     },
     {
         name: '60-24',
-        numbers: {
+        given: {
             first: 'dec',
             second: 'notDec',
+            max: 99,
+            min: 20,
             sign: '-',
         },
     },
 ];
 
 //TODO change to smth meaningful
-const defaultTask = {
+const defaultTask : TTask = {
     name: '60-24',
-    numbers: {
+    given: {
         first: 'dec',
-        second: 'two',
+        second: 'notDec',
+        max: 99,
+        min: 20,
         sign: '-',
     },
 }

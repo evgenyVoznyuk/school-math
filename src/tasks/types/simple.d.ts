@@ -1,12 +1,16 @@
+import { TOneDigit, TTwoDigit, TGetNumberArgs } from './generators'
+type TNumberKey = keyof TGetNumberArgs;
 type TSign = '-' | '+';
-type TTaskNumbers = {
+type TGiven = {
     first: TNumberKey,
     second: TNumberKey,
+    max: TOneDigit | TTwoDigit,
+    min: TOneDigit | TTwoDigit,
     sign: TSign,
 };
 type TTask = {
     name: string,
-    numbers: TNumbers,
+    given: TGiven,
 };
 
-export { TSign, TTaskNumbers, TTask };
+export { TSign, TGiven, TTask };

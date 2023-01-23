@@ -6,6 +6,7 @@ type TRange<T extends number, K extends number> = Exclude<TTo<K>, TTo<T>>;
 
 type TOneDigit = TRange<1, 10>;
 type TTwoDigit = TRange<10, 100>;
+type TDigits = TOneDigit | TTwoDigit;
 type TMultiplier = 1 | 10;
 
 type TOneDigitRange<T extends number, K extends number> = Extract<TRange<T, K>, TOneDigit>;
@@ -29,4 +30,4 @@ type TVariants = { [K in keyof TGetNumberArgs]: (min: TGetNumberArgs[K], max: TG
 
 type TGetNumber = <K extends keyof TVariants>(key: K, min: TGetNumberArgs[K], max: TGetNumberArgs[K]) => number;
 
-export { TOneDigit, TTwoDigit, TMultiplier, TGetOne, TGetDec, TGetNotDec, TVariants, TGetNumber };
+export { TOneDigit, TTwoDigit, TDigits, TMultiplier, TGetOne, TGetDec, TGetNotDec, TGetNumberArgs, TVariants, TGetNumber };

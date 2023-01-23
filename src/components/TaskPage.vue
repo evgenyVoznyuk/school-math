@@ -9,7 +9,7 @@
       :color="'#808080'"
     />
     <QuestionText
-      :text="questionText"
+      :text="question"
       :color="'#000'"
     />
     <AnswerInput
@@ -25,21 +25,19 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
-import type { TTask } from '../tasks/types/simple';
 import { getTaskByName } from '../tasks/simple';
-import { getNumber } from '../tasks/generators'
 import PointsCounter from "./PointsCounter.vue";
 import QuestionText from "./QuestionText.vue";
 import AnswerInput from "./AnswerInput.vue";
+import { getQuestion } from "../tasks/questions";
 
 const route = useRoute();
-const { numbers } : TTask = getTaskByName(route.params.name as string);
-const firstNumber = getNumber(numbers.first, 20, 99);
-const secondMax = numbers.sign === '-' ? firstNumber - 1 :  100 - firstNumber;
-const secondNumber = getNumber(numbers.second, 1, secondMax);
+const { given } = getTaskByName(route.params.name as string);
+const { text: questionText, answer: answerValue } = getQuestion(given)
+console.log(answerValue)
 
-const questionText = ref<string>()
-questionText.value = `${firstNumber} ${numbers.sign} ${secondNumber} = ?`
+const question = ref<string>()
+question.value = questionText;
 
 const counter = ref();
 const answerInput = ref();

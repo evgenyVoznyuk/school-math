@@ -40,8 +40,8 @@ const getNotDec : TGetNotDec = (min: TTwoDigit, max: TTwoDigit) => {
     if (maxInt < minInt) throw new Error('max < min');
     if (minInt === maxInt) return minInt;
     const dozen = getDec(minInt, maxInt);
-    const unitsMax = maxInt % 10;
-    const unit = unitsMax === 0 ? 0 : getOne(1, unitsMax as TOneDigit)
+    const unitsMax = maxInt % 10 || 10;
+    const unit = getOne(1, unitsMax as TOneDigit)
     return dozen + unit;
 }
 
