@@ -3,6 +3,14 @@ import { describe, it, expect, beforeEach, afterEach, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 import PointsCounter from '../PointsCounter.vue'
 
+const propsData = {
+  initial: 10,
+  increment: 10,
+  decrement: 1,
+  interval: 1000,
+  color: '#000',
+}
+
 describe('PointsCounter', () => {
   beforeEach(() => {
     vi.useFakeTimers()
@@ -12,54 +20,22 @@ describe('PointsCounter', () => {
     vi.useRealTimers()
   })
   it('renders properly', () => {
-    const wrapper = mount(PointsCounter, {
-      props: {
-        initial: 10,
-        increment: 10,
-        decrement: 1,
-        interval: 1000,
-        color: '#000',
-      }, 
-    })
+    const wrapper = mount(PointsCounter, { propsData });
     expect(wrapper.find('.pointer-counter')).toBeTruthy();
   });
   it('starts with 10', async () => {
-    const wrapper = mount(PointsCounter, {
-      props: {
-        initial: 10,
-        increment: 10,
-        decrement: 1,
-        interval: 1000,
-        color: '#000',
-      },
-    })
+    const wrapper = mount(PointsCounter, { propsData });
     await wrapper.vm.start();
     expect(wrapper.find('.pointer-counter').text()).toBe('10');
   });
   it('increments with 10', async () => {
-    const wrapper = mount(PointsCounter, {
-      props: {
-        initial: 10,
-        increment: 10,
-        decrement: 1,
-        interval: 1000,
-        color: '#000',
-      },
-    })
+    const wrapper = mount(PointsCounter, { propsData });
     await wrapper.vm.start();
     await wrapper.vm.update();
     expect(wrapper.find('.pointer-counter').text()).toBe('20');
   });
   it('decrements with 1 every second', async () => {
-    const wrapper = mount(PointsCounter, {
-      props: {
-        initial: 10,
-        increment: 10,
-        decrement: 1,
-        interval: 1000,
-        color: '#000',
-      },
-    })
+    const wrapper = mount(PointsCounter, { propsData });
     await wrapper.vm.start();
     vi.advanceTimersByTime(1000)
     expect(wrapper.vm.points).toBe(9);
@@ -68,12 +44,10 @@ describe('PointsCounter', () => {
   })
   it('stops at 0', async () => {
     const wrapper = mount(PointsCounter, {
-      props: {
+      propsData: {
+        ...propsData,
         initial: 1,
         increment: 1,
-        decrement: 1,
-        interval: 1000,
-        color: '#000',
       },
     })
     await wrapper.vm.start();
@@ -83,15 +57,7 @@ describe('PointsCounter', () => {
     expect(wrapper.vm.points).toBe(0);
   })
   it('emits points on stop', async () => {
-    const wrapper = mount(PointsCounter, {
-      props: {
-        initial: 10,
-        increment: 10,
-        decrement: 1,
-        interval: 1000,
-        color: '#000',
-      },
-    })
+    const wrapper = mount(PointsCounter, { propsData });
     await wrapper.vm.start();
     vi.advanceTimersToNextTimer()
         .advanceTimersToNextTimer()

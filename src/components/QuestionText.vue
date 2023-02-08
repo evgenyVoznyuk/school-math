@@ -21,5 +21,6 @@ defineProps<{
   font-size: 1.2em;
   font-weight: 700;
   color: v-bind(color);
+  max-height: 0.75em;
 }
 </style>

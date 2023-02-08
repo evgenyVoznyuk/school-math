@@ -17,24 +17,36 @@
       v-model="answer"
       :type="'number'"
       :color="'#000'"
-      :width="120"
+      :width="150"
+      :height="50"
+    />
+    <CheckButton
+      :show="checkButton"
+      :disabled="!hasAnswer"
+      :text="'Проверить'"
+      :color="'#000'"
+      :bg-color="'#ADD8E6'"
+      :width="150"
+      :height="50"
+      @check="check"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, computed, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { getTaskByName } from '../tasks/simple';
+import { getQuestion } from "../tasks/questions";
 import PointsCounter from "./PointsCounter.vue";
 import QuestionText from "./QuestionText.vue";
 import AnswerInput from "./AnswerInput.vue";
-import { getQuestion } from "../tasks/questions";
+import CheckButton from "./CheckButton.vue";
 
 const route = useRoute();
 const { given } = getTaskByName(route.params.name as string);
-const { text: questionText, answer: answerValue } = getQuestion(given)
-console.log(answerValue)
+const { text: questionText, answer: correctAnswer } = getQuestion(given)
+console.log(correctAnswer)
 
 const question = ref<string>()
 question.value = questionText;
@@ -47,4 +59,20 @@ onMounted(() => {
 })
 
 const answer = ref();
+const hasAnswer = computed(() => !!answer.value || answer.value === 0);
+
+const checkButton = ref(true)
+const check = () => {
+  if (hasAnswer.value) checkButton.value = false;
+}
 </script>
+
+<style>
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+</style>
