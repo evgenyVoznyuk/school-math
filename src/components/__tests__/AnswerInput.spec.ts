@@ -8,6 +8,8 @@ import AnswerInput from '../AnswerInput.vue'
    color: '#000',
    width: 100,
    height: 50,
+   isCorrect: false,
+   correctColor: '#00FF00',
  };
 
 describe('AnswerInput', () => {
@@ -51,5 +53,11 @@ describe('AnswerInput', () => {
     const input = wrapper.find('.answer-input');
     await input.setValue('  12345  ');
     expect(wrapper.vm.answer).toBe('12345');
+  });
+  it('change color if answer is correct', async () => {
+    const wrapper = mount(AnswerInput, { propsData })
+    expect(wrapper.vm.bgColor).toBe('#FFF');
+    await wrapper.setProps({ ...propsData, isCorrect: true })
+    expect(wrapper.vm.bgColor).toBe('#00FF00');
   });
 })

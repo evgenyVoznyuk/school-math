@@ -6,7 +6,7 @@
       :increment="10"
       :decrement="1"
       :interval="1000"
-      :color="'#808080'"
+      :color="'#93037D'"
     />
     <QuestionText
       :text="question"
@@ -19,6 +19,9 @@
       :color="'#000'"
       :width="150"
       :height="50"
+      :is-correct="isCorrect"
+      :correct-color="'#1CB08C'"
+      @input="input"
     />
     <CheckButton
       :show="checkButton"
@@ -61,9 +64,17 @@ onMounted(() => {
 const answer = ref();
 const hasAnswer = computed(() => !!answer.value || answer.value === 0);
 
-const checkButton = ref(true)
+const checkButton = ref(true);
+const resultText = ref(false);
+const isCorrect = computed(() => answer.value === correctAnswer);
 const check = () => {
-  if (hasAnswer.value) checkButton.value = false;
+  if (!hasAnswer.value) return;
+  checkButton.value = false;
+  resultText.value = true;
+}
+const input = () => {
+  checkButton.value = true;
+  resultText.value = false;
 }
 </script>
 

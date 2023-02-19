@@ -9,15 +9,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import {computed, ref} from "vue";
 import type { TColor } from './types/colors';
 import type { TInput, TInputType } from './types/answer';
 
-defineProps<{
+const props = defineProps<{
   type: TInputType,
   color: TColor,
   width: number,
   height: number,
+  isCorrect: boolean,
+  correctColor: TColor,
 }>();
 
 const emits = defineEmits<{
@@ -33,13 +35,13 @@ const clear = () => answer.value = '';
 defineExpose<{
   focus: () => void,
   clear: () => void,
-}>({
-  focus,
-  clear,
-})
+}>({ focus, clear })
+
+const bgColor = computed(() => props.isCorrect ? props.correctColor : '#FFF')
 </script>
 
 <style scoped>
+/*TODO css vars*/
 .answer-input {
   width: calc(v-bind(width + 'px') - 20px - 4px);
   height:  calc(v-bind(height + 'px') - 10px - 4px);
@@ -51,15 +53,19 @@ defineExpose<{
   font-size: 1.2em;
   font-weight: 700;
   border-radius: 24px;
+  border: none;
+  background-color: v-bind(bgColor);
   color: v-bind(color);
 }
-
+.answer-input:focus{
+  outline: none;
+  border: none;
+}
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 input[type=number] {
   -moz-appearance: textfield;
 }

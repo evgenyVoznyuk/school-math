@@ -1,5 +1,7 @@
 body {
   margin: 0;
+  background-color: #2871FF;
+  height: 100vh;
 }
 #app {
   max-width: 1280px;
