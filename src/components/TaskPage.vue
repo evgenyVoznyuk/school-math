@@ -6,75 +6,64 @@
       :increment="10"
       :decrement="1"
       :interval="1000"
-      :color="'#93037D'"
+      :color="'#c502a8'"
     />
     <QuestionText
-      :text="question"
+      :text="question.text"
       :color="'#000'"
     />
     <AnswerInput
       ref="answerInput"
-      v-model="answer"
+      v-model="input"
       :type="'number'"
       :color="'#000'"
       :width="150"
       :height="50"
       :is-correct="isCorrect"
       :correct-color="'#1CB08C'"
-      @input="input"
     />
-    <CheckButton
-      :show="checkButton"
-      :disabled="!hasAnswer"
-      :text="'Проверить'"
+    <NextButton
+      :show="isCorrect"
+      :text="'Ещё'"
       :color="'#000'"
-      :bg-color="'#ADD8E6'"
+      :bg-color="'#FFD900'"
       :width="150"
       :height="50"
-      @check="check"
+      @next="next"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
+import {ref, computed, onMounted, reactive} from "vue";
 import { useRoute } from "vue-router";
 import { getTaskByName } from '../tasks/simple';
 import { getQuestion } from "../tasks/questions";
 import PointsCounter from "./PointsCounter.vue";
 import QuestionText from "./QuestionText.vue";
 import AnswerInput from "./AnswerInput.vue";
-import CheckButton from "./CheckButton.vue";
+import NextButton from "./NextButton.vue";
 
 const route = useRoute();
 const { given } = getTaskByName(route.params.name as string);
-const { text: questionText, answer: correctAnswer } = getQuestion(given)
-console.log(correctAnswer)
 
-const question = ref<string>()
-question.value = questionText;
+const question = reactive(getQuestion(given))
 
 const counter = ref();
 const answerInput = ref();
 onMounted(() => {
-  counter.value.start();
   answerInput.value.focus();
+  counter.value.start();
 })
 
-const answer = ref();
-const hasAnswer = computed(() => !!answer.value || answer.value === 0);
+const input = ref();
+const isCorrect = computed(() => input.value === question.answer);
 
-const checkButton = ref(true);
-const resultText = ref(false);
-const isCorrect = computed(() => answer.value === correctAnswer);
-const check = () => {
-  if (!hasAnswer.value) return;
-  checkButton.value = false;
-  resultText.value = true;
-}
-const input = () => {
-  checkButton.value = true;
-  resultText.value = false;
+const next = () => {
+  Object.assign(question, getQuestion(given));
+  answerInput.value.clear();
+  answerInput.value.focus();
+  counter.value.update();
 }
 </script>
 

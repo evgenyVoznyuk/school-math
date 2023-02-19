@@ -7,7 +7,7 @@
       :param-name="name"
       :width="100"
       :height="100"
-      bg-color="#FFDE03"
+      :bg-color="'#FFD900'"
       color="#000000"
     />
   </div>

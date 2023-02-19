@@ -1,9 +1,8 @@
 <template>
   <div
     v-if="show"
-    class="check-button"
-    :class="{'disabled': disabled}"
-    @click="click"
+    class="next-button"
+    @click="emits('next')"
   >
     {{ text }}
   </div>
@@ -11,9 +10,8 @@
 
 <script setup lang="ts">
 import type { TColor } from './types/colors';
-const props = defineProps<{
+defineProps<{
   show: boolean,
-  disabled: boolean,
   text: string,
   width: number,
   height: number,
@@ -21,17 +19,13 @@ const props = defineProps<{
   color: TColor,
 }>()
 const emits = defineEmits<{
-  ( e: 'check' ): void,
+  ( e: 'next' ): void,
 }>();
-
-const click = () => {
-  if (props.disabled) return;
-  emits('check');
-}
 </script>
 
 <style scoped>
-.check-button {
+.next-button {
+  /*TODO css vars*/
   width: calc(v-bind(width + 'px') - 24px);
   height: calc(v-bind(height + 'px') - 8px);
   display: flex;
@@ -45,9 +39,5 @@ const click = () => {
   padding: 4px 12px;
   cursor: pointer;
   line-height: 0;
-}
-.disabled {
-  opacity: 0.6;
-  cursor: not-allowed;
 }
 </style>
