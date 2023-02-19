@@ -30,7 +30,7 @@ const click = () => {
 }
 </script>
 
-<style>
+<style scoped>
 .check-button {
   width: calc(v-bind(width + 'px') - 24px);
   height: calc(v-bind(height + 'px') - 8px);

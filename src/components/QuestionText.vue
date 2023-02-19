@@ -12,7 +12,7 @@ defineProps<{
 }>();
 </script>
 
-<style>
+<style scoped>
 .question-text {
   width: 100%;
   display: flex;

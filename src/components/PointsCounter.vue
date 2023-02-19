@@ -65,7 +65,7 @@ defineExpose<{
 })
 </script>
 
-<style>
+<style scoped>
 .pointer-counter {
   width: 100%;
   display: flex;

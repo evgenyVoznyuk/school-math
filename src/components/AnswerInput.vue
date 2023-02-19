@@ -39,7 +39,7 @@ defineExpose<{
 })
 </script>
 
-<style>
+<style scoped>
 .answer-input {
   width: calc(v-bind(width + 'px') - 20px - 4px);
   height:  calc(v-bind(height + 'px') - 10px - 4px);

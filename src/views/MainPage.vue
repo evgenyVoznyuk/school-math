@@ -18,7 +18,7 @@ import { tasks } from '../tasks/simple';
 import LinkButton from "../components/LinkButton.vue";
 </script>
 
-<style>
+<style scoped>
 .wrapper {
   max-width: 300px;
   display: flex;

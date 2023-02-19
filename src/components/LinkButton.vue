@@ -19,7 +19,7 @@ defineProps<{
 }>()
 </script>
 
-<style>
+<style scoped>
 .link-button {
   width: v-bind(width + 'px');
   height: v-bind(height + 'px');
