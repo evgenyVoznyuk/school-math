@@ -1,8 +1,7 @@
 <template>
   <div
-    v-if="show"
-    class="next-button"
-    @click="emits('next')"
+    class="click-button"
+    @click="emits('click')"
   >
     {{ text }}
   </div>
@@ -11,7 +10,6 @@
 <script setup lang="ts">
 import type { TColor } from './types/colors';
 defineProps<{
-  show: boolean,
   text: string,
   width: number,
   height: number,
@@ -19,12 +17,12 @@ defineProps<{
   color: TColor,
 }>()
 const emits = defineEmits<{
-  ( e: 'next' ): void,
+  ( e: 'click' ): void,
 }>();
 </script>
 
 <style scoped>
-.next-button {
+.click-button {
   /*TODO css vars*/
   width: calc(v-bind(width + 'px') - 24px);
   height: calc(v-bind(height + 'px') - 8px);

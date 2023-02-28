@@ -5,6 +5,7 @@ import TaskPage from '../TaskPage.vue'
 
 vi.mock('vue-router', () => ({
   useRoute: vi.fn(() => ({ params: { name: '24-5'} })),
+  useRouter: vi.fn(() => {}),
 }))
 
 vi.mock('../../tasks/simple', () => ({

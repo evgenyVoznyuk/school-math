@@ -1,13 +1,13 @@
 <template>
   <div class="wrapper">
-    <link-button
+    <LinkButton
       v-for="{ name } in tasks"
       :key="name"
       route-name="task"
       :param-name="name"
       :width="100"
       :height="100"
-      :bg-color="'#FFD900'"
+      :bg-color="'#73EF36'"
       color="#000000"
     />
   </div>

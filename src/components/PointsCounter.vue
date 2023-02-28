@@ -52,6 +52,7 @@ const update = () => {
 
 const stop = () => {
   if (timer) stopTimer();
+  //TODO need store
   emits('stop', points.value)
   reset();
 }

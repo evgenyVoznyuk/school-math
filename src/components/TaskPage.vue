@@ -6,7 +6,8 @@
       :increment="10"
       :decrement="1"
       :interval="1000"
-      :color="'#c502a8'"
+      :color="'#C502A8'"
+      @stop="stop"
     />
     <QuestionText
       :text="question.text"
@@ -22,27 +23,36 @@
       :is-correct="isCorrect"
       :correct-color="'#1CB08C'"
     />
-    <NextButton
-      :show="isCorrect"
+    <ClickButton
+      v-show="isCorrect"
       :text="'Ещё'"
       :color="'#000'"
       :bg-color="'#FFD900'"
       :width="150"
       :height="50"
-      @next="next"
+      @click="next"
+    />
+    <ClickButton
+      v-show="isCorrect"
+      :text="'Всё'"
+      :color="'#000'"
+      :bg-color="'#2696E8'"
+      :width="150"
+      :height="50"
+      @click="end"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-import {ref, computed, onMounted, reactive} from "vue";
-import { useRoute } from "vue-router";
+import { ref, computed, onMounted, reactive } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import { getTaskByName } from '../tasks/simple';
 import { getQuestion } from "../tasks/questions";
 import PointsCounter from "./PointsCounter.vue";
 import QuestionText from "./QuestionText.vue";
 import AnswerInput from "./AnswerInput.vue";
-import NextButton from "./NextButton.vue";
+import ClickButton from "./ClickButton.vue";
 
 const route = useRoute();
 const { given } = getTaskByName(route.params.name as string);
@@ -64,6 +74,16 @@ const next = () => {
   answerInput.value.clear();
   answerInput.value.focus();
   counter.value.update();
+}
+
+const router = useRouter();
+const end = () => {
+  answerInput.value.clear();
+  counter.value.stop();
+}
+// TODO bad idea
+const stop = (result: number) => {
+  router.push({ name: 'math', query: { result }});
 }
 </script>
 
