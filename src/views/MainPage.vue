@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <PointsResult
-      :result="+$route.query.result"
+      :result="Number($route.query.result)"
       :color="'#61059f'"
     />
     <LinkButton

@@ -14,21 +14,19 @@ beforeEach(() => {
   })
 });
 
-const propsData = {
-  routeName: 'task',
-  paramName: '67-3',
-  width: 100,
-  height: 100,
-  color: '#000',
-  bgColor: '#AAA',
-};
-
 describe('LinkButton', () => {
   it('renders properly', async () => {
     await router.push('/');
     await router.isReady();
     const wrapper = mount(LinkButton, {
-      propsData,
+      props: {
+        routeName: 'task',
+        paramName: '67-3',
+        width: 100,
+        height: 100,
+        color: '#000',
+        bgColor: '#AAA',
+      },
       global: {
         plugins: [router],
       },
@@ -39,7 +37,14 @@ describe('LinkButton', () => {
     await router.push('/');
     await router.isReady();
     const wrapper = mount(LinkButton, {
-      propsData,
+      props: {
+        routeName: 'task',
+        paramName: '67-3',
+        width: 100,
+        height: 100,
+        color: '#000',
+        bgColor: '#AAA',
+      },
       global: {
         plugins: [router],
       },

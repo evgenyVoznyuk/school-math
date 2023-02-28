@@ -29,7 +29,7 @@ const emits = defineEmits<{
 const input = ref();
 const focus = () => input.value.focus();
 
-const answer = ref<TInput>()
+const answer = ref<TInput>('');
 const clear = () => answer.value = '';
 
 defineExpose<{
