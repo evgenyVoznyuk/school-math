@@ -16,13 +16,12 @@ const props = defineProps<{
 }>();
 const text = computed<string>(() => {
   if (Number.isNaN(props.result)) return '';
-  const words = ['очко', 'очка', 'очков'];
   const points = props.result;
-  const word = words[(points % 100 > 4 && points % 100 < 20)
+  const words = ['очко', 'очка', 'очков'];
+  const index = (points % 100 > 4 && points % 100 < 20)
       ? 2
       : [2, 0, 1, 1, 1, 2][(points % 10 < 5) ? points % 10 : 5]
-      ];
-  return `У тебя ${points} ${word}!`
+  return `У тебя ${points} ${words[index]}!`
 });
 </script>
 
