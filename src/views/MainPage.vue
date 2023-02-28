@@ -1,5 +1,9 @@
 <template>
   <div class="wrapper">
+    <PointsResult
+      :result="+$route.query.result"
+      :color="'#61059f'"
+    />
     <LinkButton
       v-for="{ name } in tasks"
       :key="name"
@@ -16,6 +20,7 @@
 <script setup lang="ts">
 import { tasks } from '../tasks/simple';
 import LinkButton from "../components/LinkButton.vue";
+import PointsResult from "../components/PointsResult.vue";
 </script>
 
 <style scoped>
