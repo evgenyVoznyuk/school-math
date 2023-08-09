@@ -9,3 +9,5 @@ const app = createApp(App)
 app.use(router)
 
 app.mount('#app')
+
+navigator.serviceWorker.register('/sw.js')

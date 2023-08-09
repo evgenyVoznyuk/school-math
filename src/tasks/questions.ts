@@ -9,6 +9,7 @@ const getNumbers : TGetNumbers = (given: TGiven) => {
     let secondMax;
     if (sign === '-') secondMax = firstNumber;
     else if (sign === '+') secondMax = max - firstNumber;
+    else if (sign === 'x') secondMax = 9;
     const secondNumber = getNumber(second, 1, secondMax as TDigits);
     return { firstNumber, sign, secondNumber };
 }
@@ -18,6 +19,7 @@ const getQuestion : TGetQuestion = (given: TGiven) => {
     let answer;
     if (sign === '-') answer = firstNumber - secondNumber;
     else if (sign === '+') answer = firstNumber + secondNumber;
+    else if (sign === 'x') answer = firstNumber * secondNumber;
     return {
         text: `${firstNumber} ${sign} ${secondNumber} = ?`,
         answer,

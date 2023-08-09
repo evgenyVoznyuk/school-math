@@ -2,6 +2,16 @@ import type { TTask } from '../tasks/types/simple';
 
 const tasks: TTask[] = [
     {
+        name: 'X',
+        given: {
+            first: 'one',
+            second: 'one',
+            max: 9,
+            min: 1,
+            sign: 'x',
+        },
+    },
+    {
         name: '36+2',
         given: {
             first: 'notDec',

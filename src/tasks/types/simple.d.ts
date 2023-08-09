@@ -1,6 +1,6 @@
 import { TOneDigit, TTwoDigit, TGetNumberArgs } from './generators'
 type TNumberKey = keyof TGetNumberArgs;
-type TSign = '-' | '+';
+type TSign = '-' | '+' | 'x' | '/';
 type TGiven = {
     first: TNumberKey,
     second: TNumberKey,

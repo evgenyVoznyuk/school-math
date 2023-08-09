@@ -1,0 +1,19 @@
+{
+  "name": "Математика",
+  "start_url": "/",
+  "theme_color": "#7B1FA2",
+  "background_color": "#FFCDD2",
+  "icons": [
+    {
+      "src": "img/icons/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/icons/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "display": "standalone"
+}

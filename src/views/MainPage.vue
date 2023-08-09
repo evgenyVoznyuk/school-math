@@ -2,7 +2,7 @@
   <div class="wrapper">
     <PointsResult
       :result="Number($route.query.result)"
-      :color="'#61059f'"
+      :color="'#7B1FA2'"
     />
     <LinkButton
       v-for="{ name } in tasks"
@@ -11,8 +11,8 @@
       :param-name="name"
       :width="100"
       :height="100"
-      :bg-color="'#73EF36'"
-      color="#000000"
+      :bg-color="'#FFCDD2'"
+      color="#7B1FA2"
     />
   </div>
 </template>
@@ -31,5 +31,6 @@ import PointsResult from "../components/PointsResult.vue";
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
 }
 </style>

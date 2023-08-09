@@ -6,28 +6,28 @@
       :increment="10"
       :decrement="1"
       :interval="1000"
-      :color="'#C502A8'"
+      :color="'#7B1FA2'"
       @stop="stop"
     />
     <QuestionText
       :text="question.text"
-      :color="'#000'"
+      :color="'#7B1FA2'"
     />
     <AnswerInput
       ref="answerInput"
       v-model="input"
       :type="'number'"
-      :color="'#000'"
+      :color="'#4A148C'"
       :width="150"
       :height="50"
       :is-correct="isCorrect"
-      :correct-color="'#1CB08C'"
+      :correct-color="'#64FFDA'"
     />
     <ClickButton
       v-show="isCorrect"
       :text="'Ещё'"
-      :color="'#000'"
-      :bg-color="'#FFD900'"
+      :color="'#FCE4EC'"
+      :bg-color="'#7B1FA2'"
       :width="150"
       :height="50"
       @click="next"
@@ -35,8 +35,8 @@
     <ClickButton
       v-show="isCorrect"
       :text="'Всё'"
-      :color="'#000'"
-      :bg-color="'#2696E8'"
+      :color="'#7B1FA2'"
+      :bg-color="'#FCE4EC'"
       :width="150"
       :height="50"
       @click="end"
@@ -94,5 +94,6 @@ const stop = (result: number) => {
   align-items: center;
   justify-content: center;
   gap: 24px;
+  margin-top: 20px;
 }
 </style>
