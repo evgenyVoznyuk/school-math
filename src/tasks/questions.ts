@@ -10,16 +10,22 @@ const getNumbers : TGetNumbers = (given: TGiven) => {
     if (sign === '-') secondMax = firstNumber;
     else if (sign === '+') secondMax = max - firstNumber;
     else if (sign === 'x') secondMax = 9;
+    else if (sign === '÷') secondMax = 9;
     const secondNumber = getNumber(second, 1, secondMax as TDigits);
     return { firstNumber, sign, secondNumber };
 }
 
 const getQuestion : TGetQuestion = (given: TGiven) => {
-    const { firstNumber, sign, secondNumber } = getNumbers(given);
+    // eslint-disable-next-line prefer-const
+    let { firstNumber, sign, secondNumber } = getNumbers(given);
     let answer;
     if (sign === '-') answer = firstNumber - secondNumber;
     else if (sign === '+') answer = firstNumber + secondNumber;
     else if (sign === 'x') answer = firstNumber * secondNumber;
+    else if (sign === '÷') {
+        answer = firstNumber;
+        firstNumber = firstNumber * secondNumber;
+    }
     return {
         text: `${firstNumber} ${sign} ${secondNumber} = ?`,
         answer,

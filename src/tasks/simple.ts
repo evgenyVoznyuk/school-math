@@ -12,6 +12,16 @@ const tasks: TTask[] = [
         },
     },
     {
+        name: '÷',
+        given: {
+            first: 'one',
+            second: 'one',
+            max: 9,
+            min: 1,
+            sign: '÷',
+        },
+    },
+    {
         name: '36+2',
         given: {
             first: 'notDec',
