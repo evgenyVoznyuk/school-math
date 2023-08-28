@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper">
     <PointsCounter
+      v-show="false"
       ref="counter"
       :initial="10"
       :increment="10"
